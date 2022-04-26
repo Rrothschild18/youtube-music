@@ -1,0 +1,282 @@
+//Background Body
+body {
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 100%;
+
+	background-color: black;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+// GERAL
+.container {
+	position: relative;
+	width: 1216px;
+	margin: 0 auto;
+
+	._scroll {
+		overflow-x: scroll;
+	}
+	._wrap {
+		flex-wrap: wrap;
+	}
+	._no-wrap {
+		flex-wrap: nowrap;
+	}
+
+	._row {
+		flex-direction: row;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Roboto', sans-serif;
+}
+p {
+	font-weight: 300;
+}
+
+._justify-between {
+	justify-content: space-between;
+}
+
+.js-scroll {
+	opacity: 0;
+	transform: translate3d(-30px, 0, 0);
+	transition: 0.75s;
+
+	&.scroll {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+		animation: show_down 1s;
+	}
+}
+
+@keyframes show_right {
+	from {
+		opacity: 0;
+		transform: translate3d(-30px, 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes show_down {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -30px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+
+@include breakpoint(0, 1920px) {
+	body {
+		background-size: contain, cover;
+	}
+}
+
+
+@include breakpoint(0, $lg) {
+	.container {
+		width: 900px;
+	}
+
+	body {
+		p {
+			font-size: 1.1rem;
+		}
+	}
+	h1,
+	._h1 {
+		font-size: 2.5rem;
+	}
+	h2,
+	._h2 {
+		font-size: 1.7rem;
+	}
+	h3,
+	._h3 {
+		font-size: 1.6rem;
+	}
+	h4,
+	._h4 {
+		font-size: 1.25rem;
+	}
+	h5,
+	._h5 {
+		font-size: 18px;
+	}
+	h6,
+	._h6 {
+		font-size: 18px;
+	}
+
+
+	.Row > .col._col-2 {
+			width: 25%;
+	}
+}
+
+@include breakpoint(0, $md) {
+	.container {
+		width: 740px;
+	}
+	._show-md {
+		display: flex;
+	}
+
+	.MovieSingle {
+		> .Banner {
+			height: 1190px !important;
+
+			.container {
+				.Row {
+					flex-direction: column;
+
+					&._gutters > ._col-5   {
+						flex-direction: column;
+						width: 100%;
+
+						.content {
+							.ImageBackground {
+								width: 90% !important;
+								max-width: 376px;
+								margin: 0 auto 40px;
+
+							}
+						}
+					}
+
+					&._gutters > ._col-7   {
+						flex-direction: column;
+						width: 100%;
+
+						.info {
+							ul {
+								li {
+									display: inline-block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.Banner {
+		height: 100%;
+
+		.container {
+			.Row {
+				.col {
+					.content {
+						h1 {
+							margin-top: 40px;
+							line-height: normal;
+							text-align: left;
+						}
+						span {
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	.Filters {
+		.container {
+			.Row {
+				.col {
+					text-align: left
+				}
+			}
+		}
+	}
+
+	h1,
+	._h1 {
+		font-size: 2.5rem;
+	}
+	h2,
+	._h2 {
+		font-size: 1.6rem;
+	}
+	h3,
+	._h3 {
+		font-size: 1.2rem;
+	}
+	h4,
+	._h4 {
+	}
+	h5,
+	._h5 {
+	}
+	h6,
+	._h6 {
+	}
+
+	.Row > .col._col-2 {
+		width: 33%;
+	}	
+}
+
+@include breakpoint(0, 500px) {
+	body {
+		background-size: calc(100vh - 220px);
+	}
+
+	.Row {
+		flex-direction: column;
+	}
+}
+
+@include breakpoint(0, $sm) {
+	.container {
+		width: 96%;
+	}
+
+	.Banner {
+		height: 100% !important;
+	}
+
+	.Row > .col._col-2 {
+		
+		.Card {
+			.header {
+				max-width: 154px;
+				min-width: unset;
+			}
+		}
+	}
+}
+
+
+@include breakpoint(0, $xs) {
+
+	.Row > .col._col-2 {
+		width: 48%;
+
+		.Card {
+			.header {
+				min-height: 232px
+			}
+		}
+	}	
+}
