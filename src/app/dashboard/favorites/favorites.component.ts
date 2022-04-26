@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiTokenService } from 'src/app/api-token.service';
+import { DashboardService } from '../dashboard.service';
+import { Artist } from 'src/models/artist.model';
 
 @Component({
   selector: 'app-favorites',
@@ -7,12 +8,18 @@ import { ApiTokenService } from 'src/app/api-token.service';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
+  artists : Artist[] = []
 
   constructor(
-    private apiToken: ApiTokenService
+    private dashboard:  DashboardService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.apiToken.hasToken())
+    this.dashboard.fetchArtists()
+      .subscribe(data => this.artists = [...data.artists])
+  }
+
+  totalFollowers (artist: Artist) {
+    return `${artist.followers.total} inscritos`
   }
 }

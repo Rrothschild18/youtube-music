@@ -37,10 +37,11 @@ export class ApiTokenService {
       .subscribe(({ access_token }) => {
         window.localStorage.setItem('accessToken', access_token)
         this.accessToken = access_token
+        return access_token
       })
   }
 
   getToken() {
-    return this.accessToken
+    return window.localStorage.getItem('accessToken')
   }
 }
