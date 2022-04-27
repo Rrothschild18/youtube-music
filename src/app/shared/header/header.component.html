@@ -3,20 +3,21 @@
   <img src="https://music.youtube.com/img/on_platform_logo_dark.svg" alt="Youtube Music logo">
   <nav>
     <ul>
-      <a href="#">
+      <a>
         <li>Inicio</li>
       </a>
-      <a href="#">
+      <a>
         <li>Explorar</li>
       </a>
-      <a href="#">
+      <a>
         <li>Biblioteca</li>
       </a>
-      <a href="#">
+      <a (toggleActiveInput)="onToggleInput()">
         <div class="search">
           <mat-icon class="search-icon">search</mat-icon>
           <span>Pesquisar</span>
         </div>
+        <app-search-input (toggleActiveInput)="onToggleInput()" [activeInput]="activeInput"></app-search-input>
       </a>
     </ul>
   </nav>
