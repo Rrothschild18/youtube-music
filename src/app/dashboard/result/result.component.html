@@ -1,13 +1,28 @@
 <div class="Result">
-  <h2>Busca por: 'Nuages'</h2>
-  <h4>Albuns</h4>
+  <h2>Searched for {{ query }}</h2>
 
-  <div class="Row _no-wrap">
-    <div *ngFor="let album of results" class="Avatar">
-      <div class="col _col-2">
-        <album [data]='album'></album> 
+  <section class="album-section">
+    <h4>Albuns</h4>
+  
+    <div class="Row _no-wrap">
+      <div *ngFor="let album of results?.albums?.items" class="Avatar">
+        <div class="col _col-2">
+          <album [data]='album'></album> 
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="artist-section">
+    <h4>Artists</h4>
+  
+    <div class="Row _no-wrap">
+      <div *ngFor="let artist of results?.artists?.items" class="Avatar">
+        <div class="col _col-2">
+          <artist [data]='artist'></artist> 
+        </div>
+      </div>
+    </div>
+  </section>
 
 </div>

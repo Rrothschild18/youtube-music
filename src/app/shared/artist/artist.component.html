@@ -1,0 +1,9 @@
+<div class="Artist">
+  <div class="avatar-round">
+    <div class="avatar-img" [style.background-image]="'url('+ urlImage(data.images[0]?.url)+ ')'"></div>
+  </div>
+  <div class="artist-content">
+    <h6 class="_mb0">{{ data.name }}</h6>
+    <span>{{ totalFollowers(data) }}</span>
+  </div>
+</div>

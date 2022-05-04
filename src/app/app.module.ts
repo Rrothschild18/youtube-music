@@ -12,7 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FavoritesComponent } from './dashboard/favorites/favorites.component';
 import { SearchInputComponent } from './shared/search-input/search-input.component';
 import { AlbumComponent } from './shared/album/album.component';
-import { ResultComponent } from './dashboard/result/result.component'
+import { ResultComponent } from './dashboard/result/result.component';
+import { ArtistComponent } from './shared/artist/artist.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ResultComponent } from './dashboard/result/result.component'
     FavoritesComponent,
     SearchInputComponent,
     AlbumComponent,
-    ResultComponent
+    ResultComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,

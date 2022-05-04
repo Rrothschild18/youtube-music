@@ -1,12 +1,6 @@
 <h1 class="_h2">Seus favoritos</h1>
 <div class="Row _scroll _no-wrap">
-  <div *ngFor="let artist of artists" class="Avatar">
-    <div class="avatar-round">
-      <div class="avatar-img" [style.background-image]="'url('+ artist.images[0].url+ ')'"></div>
-    </div>
-    <div class="artist-content">
-      <h6 class="_mb0">{{ artist.name }}</h6>
-      <span>{{ totalFollowers(artist) }}</span>
-    </div>
+  <div *ngFor="let artist of artists">
+    <artist [data]="artist"></artist>
   </div>
 </div>

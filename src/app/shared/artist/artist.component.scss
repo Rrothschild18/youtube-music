@@ -1,0 +1,39 @@
+.Artist {
+  display: inline-block;
+  text-align: center;
+  min-width: max(150px, min(229px, 22vw));
+  min-height: max(150px, min(229px, 22vw));
+  margin-right: 30px;
+  cursor: pointer;
+  height: max(150px, min(229px, 22vw));
+
+  .avatar-round {
+    width: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 100%;
+    margin-bottom: 10px;
+
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;        
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &::after{
+        content: '';
+
+      }
+    }
+  }
+
+  h6 {
+    color: #fff;
+  }
+
+  span {
+    color: #828282;
+  }
+}

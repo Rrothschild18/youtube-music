@@ -9,13 +9,14 @@ import { DashboardService } from '../dashboard.service';
 export class ResultComponent implements OnInit {
 
   results: any
+  query: any
 
   constructor(private dashboard : DashboardService) { }
 
   ngOnInit(): void {
     this.dashboard.searchResults$.subscribe(
       res => {
-        this.results = res.albums.items
+        this.results = res
 
         console.log(this.results)
       });
