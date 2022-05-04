@@ -1,0 +1,42 @@
+.Album {
+
+  .image {
+    width: 226px;
+    height: 226px;
+    border-radius: 4px;
+
+    .background-img {
+      width: 226px;
+      height: 226px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 4px;
+    }
+  }
+
+  .content {
+    padding: 8px 0 0 0;
+
+    h6 {
+      margin-bottom: 0px;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .types {
+      span {
+        color: #aaa;
+        &.artist-label {
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          } 
+        }
+      }
+    }
+  }
+}

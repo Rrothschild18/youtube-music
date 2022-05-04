@@ -10,14 +10,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FavoritesComponent } from './dashboard/favorites/favorites.component';
-import { SearchInputComponent } from './shared/search-input/search-input.component'
+import { SearchInputComponent } from './shared/search-input/search-input.component';
+import { AlbumComponent } from './shared/album/album.component';
+import { ResultComponent } from './dashboard/result/result.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FavoritesComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    AlbumComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

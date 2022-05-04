@@ -1,7 +1,10 @@
-<h1 class="_h2">Seus favoritos</h1>
-<div class="Row _scroll _no-wrap">
-  <div *ngFor="let artist of artists" class="Avatar">
-    <div class="avatar-round">
+<div class="Result">
+  <h2>Busca por: 'Nuages'</h2>
+  <h4>Albuns</h4>
+
+  <div *ngFor="let album of results | async" class="Avatar">
+    <pre>{{ album }}</pre>
+    <!-- <div class="avatar-round">
       <div class="avatar-img" [style.background-image]="'url('+ artist.images[0].url+ ')'"></div>
     </div>
     <div class="artist-content">
@@ -9,4 +12,5 @@
       <span>{{ totalFollowers(artist) }}</span>
     </div>
   </div>
+  <album></album> -->
 </div>

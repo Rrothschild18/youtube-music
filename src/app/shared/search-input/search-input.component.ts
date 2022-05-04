@@ -13,23 +13,20 @@ export class SearchInputComponent implements  OnInit {
   @ViewChild ('searchInput') input: ElementRef | undefined
   @Output() toggleActiveInput = new EventEmitter<string>();
 
-  results$!: Observable<any>;
   private subject = new Subject<string>()
 
-  constructor(
-    private dashboard: DashboardService
-  ) { }
-
+  constructor(private dashboard: DashboardService) { }
 
   ngOnInit(): void {
-    this.results$ = this.subject.pipe(
+    this.subject.pipe(
       debounceTime(1000),
       distinctUntilChanged(),
       switchMap((query: string) => this.dashboard.fetchSearch(query))
-    )
-
-    // this.results$.subscribe((v)=> console.log(v))
+    ).subscribe((data)=> {
+      this.dashboard.broadcastSearchResults.next(data)
+    })
   }
+
 
   @HostListener("document:click", ['$event.target'])
   clicked(target: any) {

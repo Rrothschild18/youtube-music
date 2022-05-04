@@ -1,5 +1,4 @@
 <div class="search-input" [class.flex]="activeInput" #searchInput>
   <mat-icon class="search-icon">arrow_back</mat-icon>
   <input type="text" #searchBox (input)="search(searchBox.value)" id="" placeholder="Pesquisar">
-  <pre>{{results$ | async}}</pre>
 </div>
