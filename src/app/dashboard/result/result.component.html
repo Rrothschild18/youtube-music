@@ -2,15 +2,12 @@
   <h2>Busca por: 'Nuages'</h2>
   <h4>Albuns</h4>
 
-  <div *ngFor="let album of results | async" class="Avatar">
-    <pre>{{ album }}</pre>
-    <!-- <div class="avatar-round">
-      <div class="avatar-img" [style.background-image]="'url('+ artist.images[0].url+ ')'"></div>
-    </div>
-    <div class="artist-content">
-      <h6 class="_mb0">{{ artist.name }}</h6>
-      <span>{{ totalFollowers(artist) }}</span>
+  <div class="Row _no-wrap">
+    <div *ngFor="let album of results" class="Avatar">
+      <div class="col _col-2">
+        <album [data]='album'></album> 
+      </div>
     </div>
   </div>
-  <album></album> -->
+
 </div>

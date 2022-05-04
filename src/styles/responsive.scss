@@ -11,6 +11,10 @@ body {
 	}
 }
 
+._no-wrap {
+	flex-wrap: nowrap;
+}
+
 // GERAL
 .container {
 	position: relative;

@@ -15,7 +15,9 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
     this.dashboard.searchResults$.subscribe(
       res => {
-        console.log('resssssssssssssss', res)
+        this.results = res.albums.items
+
+        console.log(this.results)
       });
   }
 }

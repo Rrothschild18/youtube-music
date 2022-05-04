@@ -1,13 +1,12 @@
 <div class="Album">
   <div class="image">
-    <!-- <div class="avatar-img" [style.background-image]="'url('+ artist.images[0].url+ ')'"></div> -->
-    <div class="background-img" [style.background-image]="'url(https://lh3.googleusercontent.com/Hwu8B2mCh8z4YtoU_ykfI_V7xT8EAZOqpCVeNMRVvg81EHhBbngp2NcqnQRM-S3upDuAkFX4KmPoZGGwIA=w544-h544-l90-rj)'"></div>
+    <div class="background-img" [style.background-image]="'url('+ data.images[0].url + ')'"></div>
     <div class="content">
-      <h6>Dreams</h6>
+      <h6>{{ data.name }}</h6>
       <div class="types">
-        <span>Album</span>
+        <span>{{ data.album_type | titlecase  }}</span>
         <span> • </span>
-        <span class="artist-label">Nuages</span>
+        <span class="artist-label">{{ data.artists[0].name }}</span>
       </div>
     </div>
   </div>
