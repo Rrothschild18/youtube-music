@@ -9,6 +9,7 @@ import { Artist } from 'src/models/artist.model';
 })
 export class FavoritesComponent implements OnInit {
   artists : Artist[] = []
+  results : any 
 
   constructor(
     private dashboard:  DashboardService

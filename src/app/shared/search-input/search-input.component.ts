@@ -1,5 +1,5 @@
-import { Component, OnChanges, Input, SimpleChanges, ViewChild, HostListener, ElementRef, Output, EventEmitter, OnInit } from '@angular/core';
-import { debounceTime, map, Observable, Subject } from 'rxjs';
+import { Component,  Input, ViewChild, HostListener, ElementRef, Output, EventEmitter, OnInit } from '@angular/core';
+import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 import { DashboardService } from 'src/app/dashboard/dashboard.service';
 
 @Component({
@@ -7,15 +7,14 @@ import { DashboardService } from 'src/app/dashboard/dashboard.service';
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss']
 })
-export class SearchInputComponent implements OnChanges, OnInit {
+
+export class SearchInputComponent implements  OnInit {
   @Input() activeInput: any
   @ViewChild ('searchInput') input: ElementRef | undefined
   @Output() toggleActiveInput = new EventEmitter<string>();
-  values: string = ''
-  results$: Observable<any> | undefined 
-  subject = new Subject()
-  httpClient: any;
 
+  results$!: Observable<any>;
+  private subject = new Subject<string>()
 
   constructor(
     private dashboard: DashboardService
@@ -23,20 +22,13 @@ export class SearchInputComponent implements OnChanges, OnInit {
 
 
   ngOnInit(): void {
-  
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.activeInput = changes['activeInput'].currentValue
-
-    this.subject.pipe(
+    this.results$ = this.subject.pipe(
       debounceTime(1000),
-    ).subscribe({
-      next: (v) => this.dashboard.fetchSearch(v).subscribe(result => {
-        this.results$ = result
-        console.log('results', this.results$)
-      })
-    })
+      distinctUntilChanged(),
+      switchMap((query: string) => this.dashboard.fetchSearch(query))
+    )
+
+    // this.results$.subscribe((v)=> console.log(v))
   }
 
   @HostListener("document:click", ['$event.target'])
@@ -58,8 +50,7 @@ export class SearchInputComponent implements OnChanges, OnInit {
     return target.closest('.search-input') === this.input?.nativeElement
   }
 
-  search(event: KeyboardEvent) {
-    this.values = (event.target as HTMLInputElement).value
-    this.subject.next(this.values)
+  search(query: string) {
+    this.subject.next(query)
   }
 }

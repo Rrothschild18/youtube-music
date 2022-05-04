@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiTokenService } from '../api-token.service';
@@ -9,6 +9,10 @@ import { Artist } from 'src/models/artist.model';
 })
 
 export class DashboardService {
+  apiRoot: string = 'https://api.spotify.com/v1/'
+  headers = new HttpHeaders()
+  .set("Content-Type", "application/json")
+  .set("Authorization", `Bearer ${this.apiToken.getToken()}`)
 
   constructor(
     private apiToken: ApiTokenService,
@@ -18,27 +22,28 @@ export class DashboardService {
 
 
   fetchArtists(id: string = ''){
-    const headers = new HttpHeaders()
-    .set("Content-Type", "application/json")
-    .set("Authorization", `Bearer ${this.apiToken.getToken()}` )
+    const apiURL = `${this.apiRoot}artists/?ids=${this.artistsIDS()}`
 
-    return this.http.get<{artists: Artist[]}>(`https://api.spotify.com/v1/artists/?ids=${this.artistsIDS()}`, {headers})
+    return this.http.get<{artists: Artist[]}>(apiURL, {headers:this.headers})
   }
 
   fetchArtist(id: any): Observable<any>{
-    const headers = new HttpHeaders()
-    .set("Content-Type", "application/json")
-    .set("Authorization", `Bearer ${this.apiToken.getToken()}` )
+    const apiURL = `${this.apiRoot}artists/${id}`
 
-    return this.http.get(`https://api.spotify.com/v1/artists/${id}`, {headers})
+    console.log(this.http.get(apiURL, {headers: this.headers}).subscribe((v:any)=>console.log(v)))
+
+    return this.http.get<any>(apiURL, {headers: this.headers})
   }
   
   fetchSearch(query: any): Observable<any>{
-    const headers = new HttpHeaders()
-    .set("Content-Type", "application/json")
-    .set("Authorization", `Bearer ${this.apiToken.getToken()}`)
+    const apiURL = `${this.apiRoot}search?q=${query}&type=track,artist,playlist,album`
 
-    return this.http.get(`https://api.spotify.com/v1/search?q=${query}&type=track,artist,playlist,album`, {headers})
+    return this.http.get<any>(apiURL, { headers:this.headers }).pipe(
+      map(data => {
+        console.log(data)
+        return data
+      }), 
+    );
   }
 
   artistsIDS(){
