@@ -13,7 +13,8 @@ import { FavoritesComponent } from './dashboard/favorites/favorites.component';
 import { SearchInputComponent } from './shared/search-input/search-input.component';
 import { AlbumComponent } from './shared/album/album.component';
 import { ResultComponent } from './dashboard/result/result.component';
-import { ArtistComponent } from './shared/artist/artist.component'
+import { ArtistComponent } from './shared/artist/artist.component';
+import { TrackComponent } from './shared/track/track.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ArtistComponent } from './shared/artist/artist.component'
     SearchInputComponent,
     AlbumComponent,
     ResultComponent,
-    ArtistComponent
+    ArtistComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,

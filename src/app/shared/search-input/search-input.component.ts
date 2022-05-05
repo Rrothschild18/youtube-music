@@ -1,5 +1,5 @@
 import { Component,  Input, ViewChild, HostListener, ElementRef, Output, EventEmitter, OnInit } from '@angular/core';
-import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
 import { DashboardService } from 'src/app/dashboard/dashboard.service';
 
 @Component({
@@ -48,8 +48,8 @@ export class SearchInputComponent implements  OnInit {
   }
 
   search(query: string) {
-    if(!!query) return
-    
+    if(!query.length) return
+
     this.subject.next(query)
     this.dashboard.broadcastSearchQuery.next(query)
   }
