@@ -48,6 +48,9 @@ export class SearchInputComponent implements  OnInit {
   }
 
   search(query: string) {
+    if(!!query) return
+    
     this.subject.next(query)
+    this.dashboard.broadcastSearchQuery.next(query)
   }
 }

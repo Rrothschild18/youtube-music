@@ -17,8 +17,13 @@ export class ResultComponent implements OnInit {
     this.dashboard.searchResults$.subscribe(
       res => {
         this.results = res
-
         console.log(this.results)
-      });
+    });
+
+    this.dashboard.searchQuery$.subscribe(
+      searchedQuery => {
+        this.query = searchedQuery
+        console.log(this.query)
+    });
   }
 }

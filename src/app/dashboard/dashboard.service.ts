@@ -15,8 +15,10 @@ export class DashboardService {
   .set("Authorization", `Bearer ${this.apiToken.getToken()}`)
 
   broadcastSearchResults = new Subject<any>();
+  broadcastSearchQuery = new Subject<string>();
 
   searchResults$ = this.broadcastSearchResults.asObservable();
+  searchQuery$ = this.broadcastSearchQuery.asObservable();
 
 
 
@@ -44,12 +46,8 @@ export class DashboardService {
   fetchSearch(query: any) {
     const apiURL = `${this.apiRoot}search?q=${query}&type=track,artist,playlist,album`
 
-    console.log('fetch')
-
-   return this.http.get<any>(apiURL, { headers:this.headers }).pipe(
-      map(data => {
-        return data
-      }), 
+    return this.http.get<any>(apiURL, { headers:this.headers }).pipe(
+      map(data => data)
     );
   }
 
@@ -59,5 +57,9 @@ export class DashboardService {
 
   emitSearchResults(result: any) {
     this.broadcastSearchResults.next(result);
+  }
+
+  emitSearchQuery(query: string) {
+    this.broadcastSearchResults.next(query);
   }
 }
