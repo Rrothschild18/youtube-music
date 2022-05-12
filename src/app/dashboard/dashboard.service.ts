@@ -1,6 +1,6 @@
-import { Observable, map, Subject } from 'rxjs';
+import { Observable, map, Subject, catchError, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ApiTokenService } from '../api-token.service';
 import { Artist } from 'src/models/artist.model';
 
@@ -28,11 +28,10 @@ export class DashboardService {
   ) { }
   
 
-
   fetchArtists(id: string = ''){
     const apiURL = `${this.apiRoot}artists/?ids=${this.artistsIDS()}`
 
-    return this.http.get<{artists: Artist[]}>(apiURL, {headers:this.headers})
+    return this.http.get<{artists: Artist[]}>(apiURL, { headers:this.headers })
   }
 
   fetchArtist(id: any): Observable<any>{

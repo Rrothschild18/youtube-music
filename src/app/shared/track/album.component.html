@@ -1,0 +1,13 @@
+<div class="Track">
+  <div class="image">
+    <div class="background-img" [style.background-image]="'url('+ data.images[0].url + ')'"></div>
+    <div class="content">
+      <h6>{{ data.name }}</h6>
+      <div class="types">
+        <span>{{ data.album_type | titlecase  }}</span>
+        <span> • </span>
+        <span class="artist-label">{{ data.artists[0].name }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,10 @@ import { SearchInputComponent } from './shared/search-input/search-input.compone
 import { AlbumComponent } from './shared/album/album.component';
 import { ResultComponent } from './dashboard/result/result.component';
 import { ArtistComponent } from './shared/artist/artist.component';
-import { TrackComponent } from './shared/track/track.component'
+import { TrackComponent } from './shared/track/track.component';
+import { AlbumSingleComponent } from './album-single/album-single.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { httpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { TrackComponent } from './shared/track/track.component'
     AlbumComponent,
     ResultComponent,
     ArtistComponent,
-    TrackComponent
+    TrackComponent,
+    AlbumSingleComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,9 @@ import { TrackComponent } from './shared/track/track.component'
     MatIconModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

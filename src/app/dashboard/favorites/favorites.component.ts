@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../dashboard.service';
 import { Artist } from 'src/models/artist.model';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-favorites',
