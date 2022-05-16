@@ -1,0 +1,76 @@
+
+<div class="Single">
+  <section class="Banner">
+    <div class="banner-img" [style.background-image]="'url('+ artist?.images[0].url + ')'">
+    </div>
+    <div class="container">
+      <div class="description">
+        <h1>{{ artist?.name }}</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores corrupti rem, provident impedit nesciunt itaque mollitia similique eveniet optio nihil repellendus fuga architecto tempore recusandae voluptatibus aut quasi eos suscipit!</p>
+      </div>
+      <div class="actions">
+        <button class="primary">
+          <mat-icon class="share">shuffle</mat-icon>
+          <span>Random</span>
+        </button>
+        <button class="primary">
+          <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon"><path d="M16.94 6.9l-1.4 1.46C16.44 9.3 17 10.58 17 12s-.58 2.7-1.48 3.64l1.4 1.45C18.22 15.74 19 13.94 19 12s-.8-3.8-2.06-5.1zM23 12c0-3.12-1.23-5.95-3.23-8l-1.4 1.45C19.97 7.13 21 9.45 21 12s-1 4.9-2.64 6.55l1.4 1.45c2-2.04 3.24-4.87 3.24-8zM7.06 17.1l1.4-1.46C7.56 14.7 7 13.42 7 12s.6-2.7 1.5-3.64L7.08 6.9C5.78 8.2 5 10 5 12s.8 3.8 2.06 5.1zM1 12c0 3.12 1.23 5.95 3.23 8l1.4-1.45C4.03 16.87 3 14.55 3 12s1-4.9 2.64-6.55L4.24 4C2.24 6.04 1 8.87 1 12zm9-3.32v6.63l5-3.3-5-3.3z" class="style-scope yt-icon"></path></g></svg>
+          <span>Radio</span>
+        </button>
+        <button class="alert">
+          <span>Inscrever-se {{ '7.95 MIL'}}</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="songs">
+      <h4>Songs</h4>
+
+      <div *ngFor="let track of topTracks?.tracks" class="song">
+        <div class="Row">
+
+          <div class="col _col-4">
+            <div class="song-item">
+              <div class="song-img"  [style.background-image]="'url('+ track.album.images[0].url + ')'">
+              </div>
+              <span>{{ track.name }}</span>
+            </div>
+          </div>
+
+          <div class="col _col-4">
+            <div class="song-artist">
+              <span *ngIf="track.explicit" class="explicit">E</span>
+            <p>{{ track.artists[0].name }}</p>
+            </div>
+          </div>
+
+          <div class="col _col-4">
+            <div class="artist-name">
+              <p>{{ track.album.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    <h4>Albums</h4>
+
+    <div class="Row _no-wrap" >
+      <album *ngFor="let track of albums?.items" [data]="track"></album>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>Related artists</h4>
+
+    <div class="Row _no-wrap" >
+      <div *ngFor="let artist of related?.artists">
+        <a [routerLink]="['/artist', artist.id]">
+          <artist [data]='artist'></artist> 
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

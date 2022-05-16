@@ -23,7 +23,6 @@ export class ResultComponent implements OnInit {
     this.dashboard.searchQuery$.subscribe(
       searchedQuery => {
         this.query = searchedQuery
-        console.log(this.query)
     });
   }
 }

@@ -19,7 +19,9 @@
     <div class="Row _no-wrap">
       <div *ngFor="let artist of results?.artists?.items" class="Avatar">
         <div class="col _col-2">
-          <artist [data]='artist'></artist> 
+          <a href="" [routerLink]="['artist', artist.id]">
+            <artist [data]='artist'></artist> 
+          </a>
         </div>
       </div>
     </div>

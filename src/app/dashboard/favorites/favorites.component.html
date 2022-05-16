@@ -1,6 +1,8 @@
 <h1 class="_h2">Seus favoritos</h1>
 <div class="Row _scroll _no-wrap">
   <div *ngFor="let artist of artists">
-    <artist [data]="artist"></artist>
+    <a href="" [routerLink]="['/artist', artist.id]">
+      <artist [data]='artist'></artist> 
+    </a>
   </div>
 </div>

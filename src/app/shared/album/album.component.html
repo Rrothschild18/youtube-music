@@ -6,7 +6,9 @@
       <div class="types">
         <span>{{ data.album_type | titlecase  }}</span>
         <span> • </span>
-        <span class="artist-label">{{ data.artists[0].name }}</span>
+        <a [routerLink]="['artist', data.artists[0].id]">
+          <span class="artist-label">{{ data.artists[0].name }}</span>
+        </a>
       </div>
     </div>
   </div>

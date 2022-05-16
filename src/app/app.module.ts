@@ -15,7 +15,7 @@ import { AlbumComponent } from './shared/album/album.component';
 import { ResultComponent } from './dashboard/result/result.component';
 import { ArtistComponent } from './shared/artist/artist.component';
 import { TrackComponent } from './shared/track/track.component';
-import { AlbumSingleComponent } from './album-single/album-single.component';
+import { ArtistSingleComponent } from './artist-single/artist-single.component';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { httpInterceptorProviders } from './http-interceptors';
 
@@ -29,7 +29,7 @@ import { httpInterceptorProviders } from './http-interceptors';
     ResultComponent,
     ArtistComponent,
     TrackComponent,
-    AlbumSingleComponent,
+    ArtistSingleComponent,
     DashboardComponent
   ],
   imports: [
