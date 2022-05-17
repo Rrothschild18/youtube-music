@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
   clicked(target: any) {
 
     if(!this.activeInput) {
-      return console.log('falso')
+      return 
     }
 
 
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
       return
     } 
 
-   this.activeInput = false
+   return this.activeInput = false
   }
 
 
