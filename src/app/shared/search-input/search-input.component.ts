@@ -11,7 +11,7 @@ import { DashboardService } from 'src/app/dashboard/dashboard.service';
 export class SearchInputComponent implements  OnInit {
   @Input() activeInput: any
   @ViewChild ('searchInput') input: ElementRef | undefined
-  @Output() toggleActiveInput = new EventEmitter<string>();
+  @Output() toggleActiveInput = new EventEmitter<boolean>();
 
   private subject = new Subject<string>()
 
@@ -31,15 +31,24 @@ export class SearchInputComponent implements  OnInit {
   @HostListener("document:click", ['$event.target'])
   clicked(target: any) {
     //refactor
-    if(this.hasElement(target) && this.isElementInput(target)){
-      if(!this.activeInput) this.toggleActiveInput.emit()
-    } else {
-      if(!this.activeInput) return this.toggleActiveInput.emit()
-      if(this.activeInput) return this.toggleActiveInput.emit()
-    }
-  }
+    // if(this.hasInput(target) && this.isElementInput(target)){
+    //   if(!this.activeInput) this.toggleActiveInput.emit('DATA')
+    // } else {
+    //   if(!this.activeInput) return this.toggleActiveInput.emit('DATA')
+    //   if(this.activeInput) return this.toggleActiveInput.emit('DATA')
+    // }
 
-  hasElement(elementTarget: any): boolean {
+
+    // if(this.isElementInput(target) && this.activeInput) return 
+
+    if(!this.hasInput(target) && !this.activeInput) return this.toggleActiveInput.emit(true)
+
+    if(this.hasInput(target) && this.activeInput) {
+      return this.toggleActiveInput.emit(false)
+    }
+    }
+
+  hasInput(elementTarget: any): boolean {
     return !!elementTarget.closest('.search-input')
   }
 

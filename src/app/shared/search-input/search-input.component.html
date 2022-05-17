@@ -1,4 +1,4 @@
-<div class="search-input" [class.flex]="activeInput" #searchInput>
+<div class="search-input" [class.flex]="activeInput">
   <mat-icon class="search-icon">arrow_back</mat-icon>
-  <input type="text" #searchBox (input)="search(searchBox.value)" id="" placeholder="Pesquisar">
+  <input type="text" #searchBox (input)="search(searchBox.value)" id="" placeholder="Pesquisar" id="input">
 </div>

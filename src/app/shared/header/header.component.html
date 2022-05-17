@@ -14,12 +14,12 @@
       <a>
         <li>Biblioteca</li>
       </a>
-      <a (toggleActiveInput)="onToggleInput()">
+      <a (click)="handleClick($event)" #searchInput>
         <div class="search">
           <mat-icon class="search-icon">search</mat-icon>
-          <span>Pesquisar</span>
+          <span id='searchLabel'>Pesquisar</span>
         </div>
-        <app-search-input (toggleActiveInput)="onToggleInput()" [activeInput]="activeInput"></app-search-input>
+        <app-search-input [activeInput]="activeInput"></app-search-input>
       </a>
     </ul>
   </nav>

@@ -48,7 +48,9 @@
 
           <div class="col _col-4">
             <div class="artist-name">
-              <p>{{ track.album.name }}</p>
+              <a [routerLink]="['/album', track.album.id]">
+                <p>{{ track.album.name }}</p>
+              </a>
             </div>
           </div>
         </div>
