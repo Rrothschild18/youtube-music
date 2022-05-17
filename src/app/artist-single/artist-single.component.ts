@@ -25,28 +25,32 @@ export class ArtistSingleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(data => {
-      console.log(data['artistId'])
-      this.artistId = data['artistId'];
-    });
+    this.route.params.subscribe({
+      next: (data) => {
+        this.artistId = data['artistId'];
+  
 
+        //move to service
+        let artistSingleData = combineLatest([
+          this.dashboard.fetchArtistTopTracks(this.artistId),
+          this.dashboard.fetchArtist(this.artistId),
+          this.dashboard.fetchArtistAlbum(this.artistId),
+          this.dashboard.fetchArtistRelated(this.artistId)
+        ])
+        
+        artistSingleData.subscribe(combinedData => {
+          let [tracks, artist, albums, related] = combinedData
+          
+          this.topTracks = tracks
+          this.artist = artist
+          this.albums = albums
+          this.related = related
+        })
+      },
 
-    let artistSingleData = combineLatest([
-      this.dashboard.fetchArtistTopTracks(this.artistId),
-      this.dashboard.fetchArtist(this.artistId),
-      this.dashboard.fetchArtistAlbum(this.artistId),
-      this.dashboard.fetchArtistRelated(this.artistId)
-    ])
-    
-    artistSingleData.subscribe(combinedData => {
-      let [tracks, artist, albums, related] = combinedData
-      
-      this.topTracks = tracks
-      this.artist = artist
-      this.albums = albums
-      this.related = related
-    })
-  }
+      complete: () => { console.log('done') }
+    }
+  )}
 
   handleRedirect(){
     this.router.navigate(['/artist', this.artistId])

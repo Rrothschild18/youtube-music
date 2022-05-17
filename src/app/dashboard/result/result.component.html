@@ -7,7 +7,7 @@
     <div class="Row _no-wrap">
       <div *ngFor="let album of results?.albums?.items" class="Avatar">
         <div class="col _col-2">
-          <album [data]='album'></album> 
+          <album [data]='album'  [routerLink]="['album', album.id]"></album> 
         </div>
       </div>
     </div>

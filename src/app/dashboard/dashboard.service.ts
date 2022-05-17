@@ -10,7 +10,7 @@ import { Track } from '../shared/track/track.model';
 })
 
 export class DashboardService {
-  apiRoot: string = 'https://api.spotify.com/v1/'
+  apiRoot: string = 'https://api.spotify.com/v1'
   headers = new HttpHeaders()
   .set("Content-Type", "application/json")
   .set("Authorization", `Bearer ${this.apiToken.getToken()}`)
@@ -21,8 +21,6 @@ export class DashboardService {
   searchResults$ = this.broadcastSearchResults.asObservable();
   searchQuery$ = this.broadcastSearchQuery.asObservable();
 
-
-
   constructor(
     private apiToken: ApiTokenService,
     private http: HttpClient
@@ -30,19 +28,19 @@ export class DashboardService {
   
 
   fetchArtists(id: string = ''): Observable<{artists: Artist[]}>{
-    const apiURL = `${this.apiRoot}artists/?ids=${this.artistsIDS()}`
+    const apiURL = `${this.apiRoot}/artists/?ids=${this.artistsIDS()}`
 
     return this.http.get<{artists: Artist[]}>(apiURL, { headers:this.headers })
   }
 
   fetchArtist(id: any): Observable<any>{
-    const apiURL = `${this.apiRoot}artists/${id}`
+    const apiURL = `${this.apiRoot}/artists/${id}`
 
     return this.http.get<Artist>(apiURL, { headers: this.headers })
   }
   
   fetchSearch(query: any) {
-    const apiURL = `${this.apiRoot}search?q=${query}&type=track,artist,playlist,album`
+    const apiURL = `${this.apiRoot}/search?q=${query}&type=track,artist,playlist,album`
 
     return this.http.get<any>(apiURL, { headers:this.headers }).pipe(
       map(data => data)
@@ -51,13 +49,20 @@ export class DashboardService {
 
 
   fetchArtistAlbum(id: any) {
-    const apiURL = `${this.apiRoot}artists/${id}/albums?market=BR`
+    const apiURL = `${this.apiRoot}/artists/${id}/albums?market=US`
 
     return this.http.get<any>(apiURL, { headers:this.headers })
   }
 
+  fetchAlbum(id: any): Observable<Response> {
+    const apiURL = `${this.apiRoot}/albums/${id}`
+
+    return this.http.get<any>(apiURL, { headers:this.headers })
+  }
+
+
   fetchArtistRelated(id: any){
-    const apiURL = `${this.apiRoot}artists/${id}/related-artists`
+    const apiURL = `${this.apiRoot}/artists/${id}/related-artists`
 
     return this.http.get<Artist[]>(apiURL, { headers:this.headers })
   }
@@ -74,7 +79,7 @@ export class DashboardService {
   }
 
   fetchArtistTopTracks(id: any) : Observable<{tracks: Track[]}> {
-    const apiURL = `${this.apiRoot}artists/${id}/top-tracks?market=US`
+    const apiURL = `${this.apiRoot}/artists/${id}/top-tracks?market=US`
 
     return this.http.get<{tracks: Track[]}>(apiURL, { headers:this.headers })
   }

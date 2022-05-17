@@ -58,7 +58,7 @@
     <h4>Albums</h4>
 
     <div class="Row _no-wrap" >
-      <album *ngFor="let track of albums?.items" [data]="track"></album>
+      <album *ngFor="let album of albums?.items" [data]="album" [routerLink]="['/album', album.id]"></album>
     </div>
   </div>
 

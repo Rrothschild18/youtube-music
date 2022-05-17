@@ -18,6 +18,7 @@ import { TrackComponent } from './shared/track/track.component';
 import { ArtistSingleComponent } from './artist-single/artist-single.component';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { httpInterceptorProviders } from './http-interceptors';
+import { AlbumSingleComponent } from './album-single/album-single/album-single.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { httpInterceptorProviders } from './http-interceptors';
     ArtistComponent,
     TrackComponent,
     ArtistSingleComponent,
-    DashboardComponent
+    DashboardComponent,
+    AlbumSingleComponent
   ],
   imports: [
     BrowserModule,

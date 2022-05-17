@@ -1,0 +1,67 @@
+<div class="Album">
+  <div class="container">
+    <div class="header">
+      <div class="Row">
+
+        <div class="col _col-3">
+          <div class="background-img" [style.background-image]="'url('+ album?.images[0]?.url + ')'"></div>
+        </div>
+        
+        <div class="col _col-9">
+          <div class="content">
+
+            <h1>{{ album?.name | titlecase}}</h1>
+            <div class="album-info">
+              <span>{{ album?.album_type | titlecase }}</span>
+              <span> • </span>
+              <span>{{ album?.artists[0].name }}</span>
+              <span> • </span>
+              <span>{{ albumReleaseDate(album?.release_date) }}</span>
+            </div>
+
+  
+            <div class="album-about">
+              <span>{{ album?.tracks?.total }} songs</span>
+              <span> • </span>
+              <span>{{ albumDuration() }}</span>
+            </div>
+
+
+           
+
+            <div class="actions">
+              <button class="primary">
+                <mat-icon class="play">play_arrow</mat-icon>
+                <span>Play</span>
+              </button>
+              <button class="secondary">
+                <mat-icon class="library">library_add</mat-icon>
+                <span>Add to library</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="songs">
+
+      <div class="song" *ngFor="let track of albumTracks">
+       
+        <div class="details">
+          <span class="order">{{ track?.track_number }}</span>              
+          <b>{{ track?.name }}</b>
+        </div>
+    
+        <div>
+          <span *ngIf="track?.explicit" class="explicit">E</span>
+        </div>
+
+        <div class="duration">
+          <p class="_mb0">{{ duration(track?.duration_ms) }}</p>
+        </div>
+        
+      </div>
+    </div>
+</div>
